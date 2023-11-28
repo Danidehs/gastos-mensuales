@@ -1,5 +1,4 @@
 import React, { useState, useContext } from 'react';
-import Switch from 'react-switch';
 import { GlobalContext } from '../context/GlobalState';
 
 export const AddTransaction = () => {
@@ -51,20 +50,15 @@ export const AddTransaction = () => {
             alignItems: 'center',
             height: '50px',
           }}
-          className='form-control'
+          className='react-switch'
         >
-          <label>
-            <Switch
-              onChange={() => setIsIncome(!isIncome)}
-              checked={isIncome}
-              onColor='#4CAF50' // Green for income
-              offColor='#FF6347' // Soft red for expenses
-              uncheckedIcon={<div>Gasto</div>}
-              checkedIcon={<div>Ingreso</div>}
-              width={100}
-            />
+          <label
+            class='switch'
+            onChange={() => setIsIncome(!isIncome)}
+          >
+            <input type='checkbox' />
+            <span class='slider'>{isIncome}</span>
           </label>
-          <span>{isIncome ? 'Ingreso' : 'Gasto'}</span>
         </div>
         <button className='btn'>Agregar</button>
       </form>
