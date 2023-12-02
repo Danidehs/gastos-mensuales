@@ -13,10 +13,18 @@ function App() {
     <GlobalProvider>
       <Header />
       <div className='container'>
-        <Balance />
-        <IncomeExpenses />
-        <TransactionList />
-        <AddTransaction />
+        <div className='row gx-5'>
+          <div className='col-12 col-lg-2 order-lg-3'>
+            <Balance />
+          </div>
+          <div className='col-12 col-lg-6 order-lg-2'>
+            <TransactionList />
+            <AddTransaction />
+          </div>
+          <div className='col-12 col-lg-4 order-lg-1'>
+            <IncomeExpenses />
+          </div>
+        </div>
       </div>
     </GlobalProvider>
   );

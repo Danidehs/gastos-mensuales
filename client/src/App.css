@@ -2,10 +2,12 @@
 
 :root {
   --box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  width: -webkit-fill-available;
 }
 
 * {
-  box-sizing: border-box;
+  box-sizing: border-box;  
+  width: -webkit-fill-available;
 }
 
 body {
@@ -14,19 +16,21 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 100vh;
+  min-height: 50vh;
   margin: 0;
   font-family: 'Lato', sans-serif;
+  
 }
 
 .container {
-  margin: 30px auto;
   width: 350px;
+  margin-top: 4%;
 }
 
 h1 {
   letter-spacing: 1px;
   margin: 0;
+  padding-bottom: 20px;
 }
 
 h3 {
@@ -39,14 +43,17 @@ h4 {
   margin: 0;
   text-transform: uppercase;
 }
-
+.form-control {
+  margin-top: 3%;
+}
 .inc-exp-container {
   background-color: #fff;
   box-shadow: var(--box-shadow);
-  padding: 20px;
+  padding: 15px 0;
   display: flex;
   justify-content: space-between;
-  margin: 20px 0;
+  margin: 0;
+  margin-bottom: 15%;
 }
 
 .inc-exp-container > div {
@@ -87,7 +94,7 @@ input[type='number'] {
   width: 100%;
 }
 
-.btn {
+.custom-btn {
   cursor: pointer;
   background-color: #9c88ff;
   box-shadow: var(--box-shadow);
@@ -98,10 +105,11 @@ input[type='number'] {
   margin: 10px 0 30px;
   padding: 10px;
   width: 100%;
+  border-radius: 5px;
 }
 
-.btn:focus,
-.delete-btn:focus {
+.custom-btn:focus,
+.delete-custom-btn:focus {
   outline: 0;
 }
 
@@ -130,13 +138,13 @@ input[type='number'] {
   border-right: 5px solid #c0392b;
 }
 
-.delete-btn {
+.delete-custom-btn {
   cursor: pointer;
   background-color: #e74c3c;
   border: 0;
   color: #fff;
-  font-size: 20px;
-  line-height: 20px;
+  font-size: 15px;
+  line-height: 30px;
   padding: 2px 5px;
   position: absolute;
   top: 50%;
@@ -144,9 +152,12 @@ input[type='number'] {
   transform: translate(-100%, -50%);
   opacity: 0;
   transition: opacity 0.3s ease;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  width: auto;
 }
 
-.list li:hover .delete-btn {
+.list li:hover .delete-custom-btn {
   opacity: 1;
 }
 
@@ -177,22 +188,23 @@ input[type='number'] {
   right: 0;
   bottom: 0;
   background-color: #FF6347;
-  -webkit-transition: .4s;
-  transition: .4s;
-  border-radius: 34px;
+  -webkit-transition: .6s;
+  transition: .6s;
+  border-radius: 10px;
  }
- 
+
  .slider:before {
   position: absolute;
   content: "";
-  height: 26px;
-  width: 26px;
-  left: 4px;
-  bottom: 4px;
-  background-color: white;
+  height: 27px;
+  width: 50%;
+  left: 3px;
+  bottom: 10%;
+  background-color: whitesmoke;
   -webkit-transition: .4s;
   transition: .4s;
-  border-radius: 50%;
+  border-radius: 6px;
+  border: 1px solid gray;
  }
  
  input:checked + .slider {
@@ -200,13 +212,13 @@ input[type='number'] {
  }
  
  input:focus + .slider {
-  box-shadow: 0 0 1px #107006ed;
+  box-shadow: 0 0 5px #107006ed;
  }
  
  input:checked + .slider:before {
   -webkit-transform: translateX(26px);
   -ms-transform: translateX(26px);
-  transform: translateX(315px);
+  transform: translateX(95%);
  }
  
 
@@ -217,12 +229,13 @@ input[type='number'] {
   position: absolute;
   transform: translate(-50%,-50%);
   top: 50%;
-  left: 50%;
-  font-size: 12px;
-  font-family: 'Roboto', sans-serif;
+  left: 75%;
+  font-size: 14px;
+  font-family: 'Lato', sans-serif;
  }
  
  input:checked + .slider:after {
   content: 'INGRESO';
+  left: 25%;
  }
  

@@ -40,7 +40,7 @@ export const AddTransaction = () => {
             type='number'
             value={amount}
             onChange={(e) => setAmount(e.target.value)}
-            placeholder='Enter amount...'
+            placeholder='Ingresa un monto...'
           />
         </div>
         <div
@@ -52,15 +52,12 @@ export const AddTransaction = () => {
           }}
           className='react-switch'
         >
-          <label
-            class='switch'
-            onChange={() => setIsIncome(!isIncome)}
-          >
+          <label className='switch' onChange={() => setIsIncome(!isIncome)}>
             <input type='checkbox' />
-            <span class='slider'>{isIncome}</span>
+            <span className='slider'>{isIncome}</span>
           </label>
         </div>
-        <button className='btn'>Agregar</button>
+        <button className='custom-btn'>Agregar</button>
       </form>
     </>
   );

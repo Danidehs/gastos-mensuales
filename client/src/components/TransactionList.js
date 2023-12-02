@@ -9,6 +9,7 @@ export const TransactionList = () => {
     getTransactions();
     //eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+  //eslint-disable-next-line
   return (
     <>
       <h3>Historial</h3>
