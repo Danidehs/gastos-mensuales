@@ -1,7 +1,7 @@
 {
   "name": "gastos-mensuales",
   "version": "1.0.0",
-  "description": "Crear el backend para la app que mantiene registro de los gastos desde que llegamos a España",
+  "description": "Backend para la app que mantiene registro de gastos",
   "main": "server.js",
   "scripts": {
     "start": "node server",
