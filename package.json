@@ -1,10 +1,12 @@
 {
   "name": "gastos-mensuales",
-  "version": "1.0.0",
-  "description": "Backend para la app que mantiene registro de gastos",
-  "main": "server.js",
+  "version": "1.1.0",
+  "description": "Package.json principal para app con funciones de llevar un registro de gastos",
+  "private": true,
   "scripts": {
-    "start": "node server",
+    "start": "vercel dev",
+    "build": "cd client && npm run build",
+    "deploy": "vercel --prod",
     "server": "nodemon server",
     "client": "npm start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\""
@@ -12,7 +14,9 @@
   "author": "danidehs",
   "license": "MIT",
   "dependencies": {
+    "axios": "^1.6.7",
     "colors": "^1.4.0",
+    "cors": "^2.8.5",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
     "firebase": "^10.7.0",
