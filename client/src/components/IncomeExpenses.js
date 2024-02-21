@@ -4,7 +4,10 @@ import { numberWithCommas } from '../utils/format';
 
 export const IncomeExpenses = () => {
   const { transactions } = useContext(GlobalContext);
-  const amounts = transactions.map((transactions) => transactions.amount);
+  const amounts =
+    transactions && Array.isArray(transactions)
+      ? transactions.map((transaction) => transaction.amount || 0)
+      : [];
   const income = amounts
     .filter((item) => item > 0)
     .reduce((acc, item) => (acc += item), 0)
