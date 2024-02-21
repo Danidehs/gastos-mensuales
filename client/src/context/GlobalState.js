@@ -10,18 +10,16 @@ const initialState = {
 };
 
 // create context
-
 export const GlobalContext = createContext(initialState);
 
 // provider component
-
 export const GlobalProvider = ({ children }) => {
   const [state, dispatch] = useReducer(AppReducer, initialState);
 
   // actions
   async function getTransactions() {
     try {
-      const res = await axios.get('/api/v1/transactions');
+      const res = await axios.get('/api/getTransactions');
 
       dispatch({
         type: 'GET_TRANSACTION',
@@ -37,7 +35,7 @@ export const GlobalProvider = ({ children }) => {
 
   async function deleteTransaction(id) {
     try {
-      await axios.delete(`/api/v1/transactions/${id}`);
+      await axios.delete(`/api/deleteTransaction?id=${id}`);
 
       dispatch({
         type: 'DELETE_TRANSACTION',
@@ -53,12 +51,12 @@ export const GlobalProvider = ({ children }) => {
 
   async function addTransaction(transaction) {
     const config = {
-      header: {
+      headers: {
         'Content-Type': 'application/json',
       },
     };
     try {
-      const res = await axios.post(`/api/v1/transactions`, transaction, config);
+      const res = await axios.post(`/api/addTransaction`, transaction, config);
 
       dispatch({
         type: 'ADD_TRANSACTION',
