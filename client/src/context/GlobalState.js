@@ -18,8 +18,11 @@ export const GlobalProvider = ({ children }) => {
 
   // actions
   async function getTransactions() {
+    console.log('get working');
     try {
-      const res = await axios.get('/api/getTransactions');
+      const res = await axios.get(
+        'https://gastos-mensuales-eosin.vercel.app/api/getTransactions'
+      );
 
       dispatch({
         type: 'GET_TRANSACTION',
@@ -34,8 +37,11 @@ export const GlobalProvider = ({ children }) => {
   }
 
   async function deleteTransaction(id) {
+    console.log('delete working');
     try {
-      await axios.delete(`/api/deleteTransaction?id=${id}`);
+      await axios.delete(
+        `https://gastos-mensuales-eosin.vercel.app/api/deleteTransaction?id=${id}`
+      );
 
       dispatch({
         type: 'DELETE_TRANSACTION',
@@ -50,13 +56,18 @@ export const GlobalProvider = ({ children }) => {
   }
 
   async function addTransaction(transaction) {
+    console.log('add working');
     const config = {
       headers: {
         'Content-Type': 'application/json',
       },
     };
     try {
-      const res = await axios.post(`/api/addTransaction`, transaction, config);
+      const res = await axios.post(
+        `https://gastos-mensuales-eosin.vercel.app/api/addTransaction`,
+        transaction,
+        config
+      );
 
       dispatch({
         type: 'ADD_TRANSACTION',
