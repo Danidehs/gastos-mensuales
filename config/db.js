@@ -24,4 +24,3 @@ const connectDB = async () => {
 };
 
 module.exports = connectDB;
-//await mongoose.connect(process.env.MONGO_URI);

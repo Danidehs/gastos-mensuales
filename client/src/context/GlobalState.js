@@ -19,7 +19,6 @@ export const GlobalProvider = ({ children }) => {
   // actions
   async function getTransactions() {
     try {
-      const res = await axios.get('/api/getTransactions');
       console.log('global get working ');
       dispatch({
         type: 'GET_TRANSACTION',
@@ -35,7 +34,6 @@ export const GlobalProvider = ({ children }) => {
 
   async function deleteTransaction(id) {
     try {
-      console.log('global delete working');
       await axios.delete(`/api/deleteTransaction?id=${id}`);
 
       dispatch({
@@ -57,7 +55,6 @@ export const GlobalProvider = ({ children }) => {
       },
     };
     try {
-      console.log('global add working');
       const res = await axios.post('/api/addTransaction', transaction, config);
 
       dispatch({

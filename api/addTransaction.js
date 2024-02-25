@@ -4,8 +4,6 @@ const Transaction = require('../models/Transaction');
 const connectDB = require('../config/db');
 
 module.exports = async (req, res) => {
-  console.log('add working');
-
   await connectDB();
 
   res.setHeader('Access-Control-Allow-Origin', '*');
