@@ -17,7 +17,7 @@ export default (state, action) => {
     case 'ADD_TRANSACTION':
       return {
         ...state,
-        transactions: [...state.transactions, action.payload], //Gets all values from the array "transactions" and assigns it here
+        transactions: [action.payload, ...state.transactions], //Gets all values from the array "transactions" and assigns it here
       };
     case 'TRANSACTION_ERROR':
       return {

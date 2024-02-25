@@ -73,7 +73,6 @@ export const GlobalProvider = ({ children }) => {
           payload: err.response.data.error,
         });
       } else {
-        // Handle cases where err.response or err.response.data is undefined
         dispatch({
           type: 'TRANSACTION_ERROR',
           payload: 'An error occurred',

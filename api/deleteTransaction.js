@@ -1,12 +1,12 @@
-const mongoose = require('mongoose');
 const cors = require('cors')({ origin: true });
+const mongoose = require('mongoose');
 const Transaction = require('../models/Transaction');
 const connectDB = require('../config/db');
 
 module.exports = async (req, res) => {
   console.log('delete working');
 
-  res.setHeader('Access-Control-Allow-Origin', '*'); // Adjust as needed
+  res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'POST, GET, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
 

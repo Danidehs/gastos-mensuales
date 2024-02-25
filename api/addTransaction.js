@@ -1,5 +1,5 @@
-const mongoose = require('mongoose');
 const cors = require('cors')({ origin: true });
+const mongoose = require('mongoose');
 const Transaction = require('../models/Transaction');
 const connectDB = require('../config/db');
 
@@ -8,11 +8,10 @@ module.exports = async (req, res) => {
 
   await connectDB();
 
-  res.setHeader('Access-Control-Allow-Origin', '*'); // Adjust as needed
+  res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'POST, GET, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
 
-  // Handle pre-flight requests for CORS
   if (req.method === 'OPTIONS') {
     return res.status(200).end();
   }

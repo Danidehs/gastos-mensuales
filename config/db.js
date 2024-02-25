@@ -8,10 +8,8 @@ const connectDB = async () => {
     return Promise.resolve(connection);
   } else {
     console.log('Creating new database connection');
-    connection = mongoose
-      .connect(process.env.MONGO_URI, {
-        bufferCommands: false,
-      })
+    connection = await mongoose
+      .connect(process.env.MONGO_URI)
       .then((conn) => {
         console.log('Database Connected');
         return conn;
@@ -26,3 +24,4 @@ const connectDB = async () => {
 };
 
 module.exports = connectDB;
+//await mongoose.connect(process.env.MONGO_URI);
