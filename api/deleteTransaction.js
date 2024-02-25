@@ -13,7 +13,7 @@ module.exports = async (req, res) => {
   await connectDB();
 
   try {
-    const transaction = await Transaction.findById(req.query.id);
+    const transaction = await Transaction.findByIdAndDelete(req.query.id);
     if (!transaction) {
       return res.status(404).json({
         success: false,
@@ -21,9 +21,6 @@ module.exports = async (req, res) => {
       });
     }
 
-    console.log(transaction);
-
-    await transaction.remove();
     return res.status(200).json({
       success: true,
       data: {},
