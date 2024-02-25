@@ -11,7 +11,6 @@ const connectDB = async () => {
     connection = mongoose
       .connect(process.env.MONGO_URI, {
         bufferCommands: false,
-        bufferMaxEntries: 0,
       })
       .then((conn) => {
         console.log('Database Connected');
