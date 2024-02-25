@@ -1,35 +1,29 @@
 const mongoose = require('mongoose');
 
-let cached = global.mongoose;
+let connection = null;
 
-if (!cached) {
-  cached = global.mongoose = { conn: null, promise: null };
-}
-
-async function connectDB() {
-  console.log('hi');
-  if (cached.conn) {
-    // Use existing database connection
-    return cached.conn;
-  }
-
-  if (!cached.promise) {
-    // If no connection is in progress, start a new connection
-    const opts = {
-      bufferCommands: false,
-    };
-
-    cached.promise = mongoose
-      .connect(process.env.MONGO_URI, opts)
-      .then((mongoose) => {
-        return mongoose;
+const connectDB = async () => {
+  if (connection && mongoose.connection.readyState === 1) {
+    console.log('Using existing database connection');
+    return Promise.resolve(connection);
+  } else {
+    console.log('Creating new database connection');
+    connection = mongoose
+      .connect(process.env.MONGO_URI, {
+        bufferCommands: false,
+        bufferMaxEntries: 0,
+      })
+      .then((conn) => {
+        console.log('Database Connected');
+        return conn;
+      })
+      .catch((err) => {
+        console.error('Database Connection Error:', err);
+        throw err;
       });
-  }
 
-  // Use new database connection
-  cached.conn = await cached.promise;
-  console.log(`MongoDB Connected: ${cached.conn.connection.host}`);
-  return cached.conn;
-}
+    return connection;
+  }
+};
 
 module.exports = connectDB;

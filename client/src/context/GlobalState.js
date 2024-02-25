@@ -1,8 +1,8 @@
 import React, { createContext, useReducer } from 'react';
 import AppReducer from './AppReducer';
 import axios from 'axios';
-// Initial state
 
+// Initial state
 const initialState = {
   transactions: [],
   error: null,
@@ -18,12 +18,9 @@ export const GlobalProvider = ({ children }) => {
 
   // actions
   async function getTransactions() {
-    console.log('get working');
     try {
-      const res = await axios.get(
-        'https://gastos-mensuales-eosin.vercel.app/api/getTransactions'
-      );
-
+      const res = await axios.get('/api/getTransactions');
+      console.log('global get working ');
       dispatch({
         type: 'GET_TRANSACTION',
         payload: res.data.data,
@@ -37,11 +34,9 @@ export const GlobalProvider = ({ children }) => {
   }
 
   async function deleteTransaction(id) {
-    console.log('delete working');
     try {
-      await axios.delete(
-        `https://gastos-mensuales-eosin.vercel.app/api/deleteTransaction?id=${id}`
-      );
+      console.log('global delete working');
+      await axios.delete(`/api/deleteTransaction?id=${id}`);
 
       dispatch({
         type: 'DELETE_TRANSACTION',
@@ -56,28 +51,34 @@ export const GlobalProvider = ({ children }) => {
   }
 
   async function addTransaction(transaction) {
-    console.log('add working');
     const config = {
       headers: {
         'Content-Type': 'application/json',
       },
     };
     try {
-      const res = await axios.post(
-        `https://gastos-mensuales-eosin.vercel.app/api/addTransaction`,
-        transaction,
-        config
-      );
+      console.log('global add working');
+      const res = await axios.post('/api/addTransaction', transaction, config);
 
       dispatch({
         type: 'ADD_TRANSACTION',
         payload: res.data.data,
       });
     } catch (err) {
-      dispatch({
-        type: 'TRANSACTION_ERROR',
-        payload: err.response.data.error,
-      });
+      console.error('Axios error:', err);
+      console.error('Response object:', err.response);
+      if (err.response && err.response.data && err.response.data.error) {
+        dispatch({
+          type: 'TRANSACTION_ERROR',
+          payload: err.response.data.error,
+        });
+      } else {
+        // Handle cases where err.response or err.response.data is undefined
+        dispatch({
+          type: 'TRANSACTION_ERROR',
+          payload: 'An error occurred',
+        });
+      }
     }
   }
 
