@@ -21,6 +21,8 @@ module.exports = async (req, res) => {
       });
     }
 
+    console.log(transaction);
+
     await transaction.remove();
     return res.status(200).json({
       success: true,

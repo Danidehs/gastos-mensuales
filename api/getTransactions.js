@@ -12,7 +12,6 @@ module.exports = async (req, res) => {
 
   await connectDB();
 
-  // Handle pre-flight requests for CORS
   if (req.method === 'OPTIONS') {
     return res.status(200).end();
   }
