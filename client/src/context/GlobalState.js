@@ -19,7 +19,7 @@ export const GlobalProvider = ({ children }) => {
   // actions
   async function getTransactions() {
     try {
-      console.log('global get working ');
+      const res = await axios.get('/api/getTransactions');
       dispatch({
         type: 'GET_TRANSACTION',
         payload: res.data.data,
